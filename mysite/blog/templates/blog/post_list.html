@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Clean Blog</h1>
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% block body_block %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% for post in post_list %}
+      <div class="post-preview">
+        <a href="{% url 'post_detail' pk=post.pk %}">
+          <h2 class="post-title">
+            {{post.title}}
+          </h2>
+        </a>
+        <p class="post-meta">Published
+          on {{post.published|date:"D M Y"}}</p>
+        <a href="{% url 'post_detail' pk=post.pk%}">Comments : {{post.approve_comments.count}}</a>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
