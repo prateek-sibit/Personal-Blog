@@ -1,6 +1,22 @@
 {% extends 'blog/base.html' %}
+{% load staticfiles %}
 {% block body_block %}
-<div class="jumbotron">
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({%static 'img/login.jpg'%})">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Login Page</h1>
+          <h2>(Must be a superuser, please check with the admin)</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
   <h2>Please Login :</h2>
   <h3>(Must be a superuser, please check with the admin)</h3>
   {% if form.errors %}
@@ -12,5 +28,5 @@
     <input type="submit" class="btn btn-primary" name="" value="Login">
     <input type="hidden" name="next" value="{{next}}">
   </form>
-</div>
+
 {% endblock %}
