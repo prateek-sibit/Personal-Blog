@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-{% block content %}
+{% block body_block %}
 <div class="jumbotron">
   <h2>Please Login :</h2>
   <h3>(Must be a superuser, please check with the admin)</h3>
@@ -8,7 +8,7 @@
   {% endif %}
   <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
-    {% form.as_p %}
+    {{ form.as_p }}
     <input type="submit" class="btn btn-primary" name="" value="Login">
     <input type="hidden" name="next" value="{{next}}">
   </form>

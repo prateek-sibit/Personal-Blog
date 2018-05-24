@@ -1,6 +1,9 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base.html'%}
+{% load staticfiles %}
+{% block body_block %}
+
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url({%static 'img/home-bg.jpg'%})">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -13,7 +16,7 @@
     </div>
   </div>
 </header>
-{% block body_block %}
+
 
 <div class="container">
   <div class="row">
@@ -30,6 +33,7 @@
         <a href="{% url 'post_detail' pk=post.pk%}">Comments : {{post.approve_comments.count}}</a>
       </div>
       <hr>
+      {% endfor %}
     </div>
   </div>
 </div>
