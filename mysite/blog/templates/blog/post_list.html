@@ -1,42 +1,39 @@
 {% extends 'blog/base.html'%}
 {% load staticfiles %}
 {% block body_block %}
-
 <!-- Page Header -->
 <header class="masthead" style="background-image: url({%static 'img/home.jpg'%})">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h1>Your Blog</h1>
-          <h2>Blog subheading or Quote</h2>
-          <span class="subheading">I'm a blogger. What is your superpower?</span>
-        </div>
+   <div class="overlay"></div>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+               <h1>Your Blog</h1>
+               <h2>Blog subheading or Quote</h2>
+               <span class="subheading">I'm a blogger. What is your superpower?</span>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </header>
-
-
 <div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      {% for post in post_list %}
-      <div class="post-preview">
-        <a href="{% url 'post_detail' pk=post.pk %}">
-          <h2 class="post-title">
-            {{post.title}}
-          </h2>
-        </a>
-        <p class="post-meta">Published
-          on {{post.published|date:"D M Y"}}</p>
-        <a href="{% url 'post_detail' pk=post.pk%}">Comments : {{post.approve_comments.count}}</a>
+   <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+         {% for post in post_list %}
+         <div class="post-preview">
+            <a href="{% url 'post_detail' pk=post.pk %}">
+               <h2 class="post-title">
+                  {{post.title}}
+               </h2>
+            </a>
+            <p class="post-meta">Published
+               on {{post.published|date:"D M Y"}}
+            </p>
+            <a href="{% url 'post_detail' pk=post.pk%}">Comments : {{post.approve_comments.count}}</a>
+         </div>
+         <hr>
+         {% endfor %}
       </div>
-      <hr>
-      {% endfor %}
-    </div>
-  </div>
+   </div>
 </div>
-
 {% endblock %}

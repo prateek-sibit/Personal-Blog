@@ -17,16 +17,24 @@
   </div>
 </header>
 
-  <h2>Please Login :</h2>
-  <h3>(Must be a superuser, please check with the admin)</h3>
-  {% if form.errors %}
-    <p>Your username and password didn't match! Please try again</p>
-  {% endif %}
-  <form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" name="" value="Login">
-    <input type="hidden" name="next" value="{{next}}">
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% if form.errors %}
+        <p>Your username and password didn't match! Please try again</p>
+      {% endif %}
+      <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        {{field.label_tag}}<br>
+        {{field}}<br>
+        {% endfor %}
+        <br>
+        <input width="100%" type="submit" class="btn btn-primary" name="" value="Login">
+        <input type="hidden" name="next" value="{{next}}">
+      </form>
+     </div>
+   </div>
+ </div>
 
 {% endblock %}
